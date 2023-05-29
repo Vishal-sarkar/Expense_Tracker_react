@@ -4,8 +4,8 @@ import ExpenseItem from "./ExpenseItem";
 import Card from '../UI/Card';
 import ExpensesFilter from "./ExpensesFilter";
 
-function Expenses({expences}) {
-  const [year, setYear] = useState("");
+function Expenses({ expences }) {
+  const [year, setYear] = useState("2020");
 
   const selectDateHandeler = (e) => {
     setYear(e)
@@ -13,18 +13,18 @@ function Expenses({expences}) {
   console.log("sbdgfvb", year);
   return (
     <>
-    <ExpensesFilter selectDateHandeler={selectDateHandeler}/>
-    <Card className='expenses' >
+      <Card className='expenses' >
+        <ExpensesFilter selected={year} selectDateHandeler={selectDateHandeler} />
         {expences.map((item, i) => {
-        return (
-          <ExpenseItem
-          key={item.id} 
-          title={item.title}
-          amount={item.amount}
-          date={item.date} />
-        )
-      })}
-    </Card>
+          return (
+            <ExpenseItem
+              key={item.id}
+              title={item.title}
+              amount={item.amount}
+              date={item.date} />
+          )
+        })}
+      </Card>
     </>
   )
 }
