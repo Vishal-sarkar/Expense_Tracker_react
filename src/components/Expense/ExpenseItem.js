@@ -4,9 +4,7 @@ import ExpenseDate from './ExpenseDate'
 import Card from '../UI/Card'
 
 function ExpenseItem({ title, amount, date }) {
-const clickHandle = () => {
-  console.log("clicked");
-}
+
 
 
   return (
@@ -16,7 +14,6 @@ const clickHandle = () => {
         <h2>{title}</h2>
         <div className='expense-item__price'>${amount}</div>
       </div>
-      <button onClick={clickHandle()}>Change Title</button>
     </Card>
   )
 }
