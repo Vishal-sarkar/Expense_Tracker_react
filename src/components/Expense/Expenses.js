@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Expenses.css"
 import ExpenseItem from "./ExpenseItem";
-import NewExpenseComp from "./NewExpenseComp";
-import Card from './Card';
+import Card from '../UI/Card';
+import ExpensesFilter from "./ExpensesFilter";
 
 function Expenses({expences}) {
+  const [year, setYear] = useState("");
+
+  const selectDateHandeler = (e) => {
+    setYear(e)
+  }
+  console.log("sbdgfvb", year);
   return (
+    <>
+    <ExpensesFilter selectDateHandeler={selectDateHandeler}/>
     <Card className='expenses' >
         {expences.map((item, i) => {
         return (
@@ -17,6 +25,7 @@ function Expenses({expences}) {
         )
       })}
     </Card>
+    </>
   )
 }
 
