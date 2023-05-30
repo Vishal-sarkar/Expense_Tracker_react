@@ -5,7 +5,7 @@ const ExpenseForn = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
-    const [showForm, setShowForm] = useState();
+    // const [showForm, setShowForm] = useState();
 
     // const [userInput, setUserInput] = useState({
     //     enteredTitle: '',
@@ -61,7 +61,7 @@ const ExpenseForn = (props) => {
 
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
             date: new Date(enteredDate),
         };
 
@@ -72,35 +72,58 @@ const ExpenseForn = (props) => {
         setEnteredDate("");
     }
 
-    if (showForm) {
-        return (
-            <form onSubmit={submitHandler}>
-                <div className='new-expense__controls'>
-                    <div className='new-expense__control'>
-                        <label>Title</label>
-                        <input type='text' value={enteredTitle} onChange={titleChangeHandeler} />
-                    </div>
-                    <div className='new-expense__control'>
-                        <label>Amount</label>
-                        <input type='number' min="0.01" step="0.01" value={enteredAmount} onChange={amountChangeHandeler} />
-                    </div>
-                    <div className='new-expense__control'>
-                        <label>Date</label>
-                        <input type='date' min="2019-01-01" max="2022-12-31" value={enteredDate} onChange={dateChangeHandeler} />
-                    </div>
-                </div>
-                <div className='new-expense__actions'>
-                    <button onClick={() => setShowForm(false)}>Cancel</button>
-                    <button type='submit'>Add Expense</button>
-                </div>
-            </form>
-        )
-    }
+    // if (showForm) {
+    //     return (
+    //         <form onSubmit={submitHandler}>
+    //             <div className='new-expense__controls'>
+    //                 <div className='new-expense__control'>
+    //                     <label>Title</label>
+    //                     <input type='text' value={enteredTitle} onChange={titleChangeHandeler} />
+    //                 </div>
+    //                 <div className='new-expense__control'>
+    //                     <label>Amount</label>
+    //                     <input type='number' min="0.01" step="0.01" value={enteredAmount} onChange={amountChangeHandeler} />
+    //                 </div>
+    //                 <div className='new-expense__control'>
+    //                     <label>Date</label>
+    //                     <input type='date' min="2019-01-01" max="2022-12-31" value={enteredDate} onChange={dateChangeHandeler} />
+    //                 </div>
+    //             </div>
+    //             <div className='new-expense__actions'>
+    //                 <button onClick={() => setShowForm(false)}>Cancel</button>
+    //                 <button type='submit'>Add Expense</button>
+    //             </div>
+    //         </form>
+    //     )
+    // }
+
+    // return (
+    //     <div className='new-expense__newbtn'>
+    //         <button onClick={() => setShowForm(true)}>Add New Expense</button>
+    //     </div>
+    // )
 
     return (
-        <div className='new-expense__newbtn'>
-            <button onClick={() => setShowForm(true)}>Add New Expense</button>
-        </div>
+        <form onSubmit={submitHandler}>
+            <div className='new-expense__controls'>
+                <div className='new-expense__control'>
+                    <label>Title</label>
+                    <input type='text' value={enteredTitle} onChange={titleChangeHandeler} />
+                </div>
+                <div className='new-expense__control'>
+                    <label>Amount</label>
+                    <input type='number' min="0.01" step="0.01" value={enteredAmount} onChange={amountChangeHandeler} />
+                </div>
+                <div className='new-expense__control'>
+                    <label>Date</label>
+                    <input type='date' min="2019-01-01" max="2022-12-31" value={enteredDate} onChange={dateChangeHandeler} />
+                </div>
+            </div>
+            <div className='new-expense__actions'>
+                <button onClick={props.stopEditingHandle}>Cancel</button>
+                <button type='submit'>Add Expense</button>
+            </div>
+        </form>
     )
 
 

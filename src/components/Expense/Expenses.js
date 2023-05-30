@@ -4,7 +4,7 @@ import ExpenseItem from "./ExpenseItem";
 import Card from '../UI/Card';
 import ExpensesFilter from "./ExpensesFilter";
 import ExpenseList from './ExpenseList';
-
+import ExpensesChart from './ExpensesChart';
 function Expenses({ items }) {
   const [year, setYear] = useState("2020");
 
@@ -22,6 +22,7 @@ function Expenses({ items }) {
     <li>
       <Card className='expenses' >
         <ExpensesFilter selected={year} selectDateHandeler={selectDateHandeler} />
+        <ExpensesChart expenses={filteredExpenses} />
         <ExpenseList items={filteredExpenses}/>
       </Card>
     </li>
